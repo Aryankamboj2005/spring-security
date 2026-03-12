@@ -17,6 +17,11 @@ public class squareServlet extends HttpServlet {
 //		 int k = (int) req.getAttribute("k"); // we are fatching a value of the intType of the name "k" into the 
 //		                            // variable k 
 
-		    PrintWriter outt = res.getWriter();
-		    outt.println("Value from AddServlet: ");
+//		    PrintWriter outt = res.getWriter();
+//		    outt.println("Value from AddServlet: "k); 
+		
+		// # to get the data from from the another servlet 
+		int k = Integer.parseInt(req.getParameter("k"));
+		PrintWriter outt = res.getWriter();
+        outt.println("Value from AddServlet: "+k); 
 }}
