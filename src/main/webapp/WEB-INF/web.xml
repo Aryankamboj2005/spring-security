@@ -39,7 +39,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <servlet-name>myservlet</servlet-name>
     <url-pattern>/test</url-pattern>
 </servlet-mapping>
-<!--  storing dataName and its value  -->
+<!--  storing dataName and its valu also common for  all the servlet  -->
 <context-param>
    <param-name>Name</param-name>
    <param-value>Aryan</param-value>
