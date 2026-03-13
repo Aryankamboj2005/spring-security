@@ -22,6 +22,8 @@ public class AddServlet extends HttpServlet {
 //	    rd.forward(req,res);
 	    
 	    // another method to request data from the another servlet 
-	    res.sendRedirect("square?k="+k); // url rewriting
+	    HttpSession session =req.getSession();
+	    session.setAttribute("k", k);
+	    res.sendRedirect("square");
 	    
 	}}

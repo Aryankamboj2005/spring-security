@@ -8,6 +8,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class squareServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException{
@@ -21,7 +22,10 @@ public class squareServlet extends HttpServlet {
 //		    outt.println("Value from AddServlet: "k); 
 		
 		// # to get the data from from the another servlet 
-		int k = Integer.parseInt(req.getParameter("k"));
+		HttpSession session= req.getSession();
+		int k = (int) session.getAttribute("k");
+//		int k = Integer.parseInt(req.getParameter("k"));
+		k = k*k;
 		PrintWriter outt = res.getWriter();
-        outt.println("Value from AddServlet: "+k); 
+        outt.println("Value from AddServlet: "+k); //
 }}
