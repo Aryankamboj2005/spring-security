@@ -24,6 +24,7 @@ public class squareServlet extends HttpServlet {
 		// # to get the data from from the another servlet 
 		HttpSession session= req.getSession();
 		int k = (int) session.getAttribute("k");
+		session.removeAttribute("k"); // to remove the attribute
 //		int k = Integer.parseInt(req.getParameter("k"));
 		k = k*k;
 		PrintWriter outt = res.getWriter();
