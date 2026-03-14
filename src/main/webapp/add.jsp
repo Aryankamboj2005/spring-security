@@ -9,7 +9,7 @@
 <body>
 
 <!--    it is used to import the packages    -->
-<%@ page import= "java.util.Date,java.util.*" %>    
+<%@ page import= "java.util.Date,java.util.*" %>    <!--  also called the directive -->
 
 <!--     this is the decleration section -->
 <%! 
@@ -20,9 +20,11 @@
         int i = Integer.parseInt(request.getParameter("num1"));
 	    int j = Integer.parseInt(request.getParameter("num2"));
 	    int k = i+j;
-	    out.println(k);
-	    out.println(z);
+	    out.println(k+"</br>");
 	    %>
+	    <!--  expression tag used for printing any thing in the java  -->
+	    <!--  expression  -->
+	    <%= z %>  <!--  print statement  -->
 
 </body>
 </html>
