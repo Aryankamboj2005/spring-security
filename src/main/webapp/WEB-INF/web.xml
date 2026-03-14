@@ -7,7 +7,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 <display-name>DemoApp</display-name>
 
-<servlet>
+<!-- <servlet>
     <servlet-name>abc</servlet-name>
     <servlet-class>AryanBackend.com.AddServlet</servlet-class>
 </servlet>
@@ -17,7 +17,7 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
     <url-pattern>/add</url-pattern>
 </servlet-mapping>
 
-<!-- creating mappin for the square servet-->
+creating mappin for the square servet
  
 <servlet>
     <servlet-name>squareOfNumber</servlet-name>
@@ -32,13 +32,13 @@ http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
 <servlet>
     <servlet-name>myservlet</servlet-name>
-    <servlet-class>AryanBackend.com.Myser</servlet-class>  <!--  changing the old servlet address so that new can work -->
+    <servlet-class>AryanBackend.com.Myser</servlet-class>   changing the old servlet address so that new can work
 </servlet>
 
 <servlet-mapping>
     <servlet-name>myservlet</servlet-name>
     <url-pattern>/test</url-pattern>
-</servlet-mapping>
+</servlet-mapping> -->
 <!--  storing dataName and its valu also common for  all the servlet  -->
 <context-param>
    <param-name>Name</param-name>
