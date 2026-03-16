@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
 String url ="jdbc:mysql://localhost:3306/demo";
 String UserName= "root";
 String password = "Aryan2005@";
-String query ="Select * from students where id=1"; // writing query
+String query ="Select * from students where id=1"; // writing query .
 
 Class.forName("com.mysql.cj.jdbc.Driver"); // SQL driver 
 Connection con= DriverManager.getConnection(url,UserName,password);
