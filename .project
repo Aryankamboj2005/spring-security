@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>JSTL</name>
+=======
+	<name>DemoApp</name>
+>>>>>>> 940666811719da68fcbee14463e0a7bf991632c7
 	<comment></comment>
 	<projects>
 	</projects>

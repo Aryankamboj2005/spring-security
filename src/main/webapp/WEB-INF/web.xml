@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>JSTL</display-name>
 	<welcome-file-list>
@@ -12,3 +13,73 @@
 		<welcome-file>default.xhtml</welcome-file>
 	</welcome-file-list>
 </web-app>
+=======
+<web-app id="WebApp_ID" version="2.4"
+xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+<display-name>DemoApp</display-name>
+
+<!-- <servlet>
+    <servlet-name>abc</servlet-name>
+    <servlet-class>AryanBackend.com.AddServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>abc</servlet-name>
+    <url-pattern>/add</url-pattern>
+</servlet-mapping>
+
+creating mappin for the square servet
+ 
+<servlet>
+    <servlet-name>squareOfNumber</servlet-name>
+    <servlet-class>AryanBackend.com.squareServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>squareOfNumber</servlet-name>
+    <url-pattern>/square</url-pattern>
+</servlet-mapping>
+ 
+
+<servlet>
+    <servlet-name>myservlet</servlet-name>
+    <servlet-class>AryanBackend.com.Myser</servlet-class>   changing the old servlet address so that new can work
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>myservlet</servlet-name>
+    <url-pattern>/test</url-pattern>
+</servlet-mapping> -->
+<!--  storing dataName and its valu also common for  all the servlet  -->
+<context-param>
+   <param-name>Name</param-name>
+   <param-value>Aryan</param-value>
+</context-param>
+
+<context-param>
+   <param-name>Phone</param-name>
+   <param-value>Samsung</param-value>
+</context-param>
+
+
+<servlet>
+    <servlet-name>Username</servlet-name>
+    <servlet-class>AryanBackend.com.Myservet</servlet-class>
+   <!--    specific DataName and corresponding data  for each servlet     -->
+    <init-param>
+       <param-name>Name</param-name>
+       <param-value> Aryan </param-value>
+    </init-param>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>Username</servlet-name>
+    <url-pattern>/username</url-pattern>
+</servlet-mapping>
+ 
+</web-app>
+>>>>>>> 940666811719da68fcbee14463e0a7bf991632c7
