@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" errorPage="error.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +25,7 @@
 	    <!--  expression tag used for printing any thing in the java  -->
 	    <!--  expression  -->
 	    <%= z %>  <!--  print statement  -->
+	    <%= 9/0 %>
 
 </body>
 </html>
