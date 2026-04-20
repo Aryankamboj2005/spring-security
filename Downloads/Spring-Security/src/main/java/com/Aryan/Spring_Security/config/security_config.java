@@ -1,21 +1,24 @@
 package com.Aryan.Spring_Security.config;
 
+import com.Aryan.Spring_Security.service.MyUserDetailSeavice;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
 @EnableWebSecurity // to change the configuration of the web security
 public class security_config {
+
+    @Autowired
+    private MyUserDetailSeavice userDetailService;
 
     @Bean // used to tell the spring take the configuration from here
     public SecurityFilterChain chain(HttpSecurity http) throws Exception {
@@ -34,22 +37,12 @@ public class security_config {
     }
 
     @Bean
-    public UserDetailsService detail() {
-        // Using this we can give custom username and password.
-        // The default settings in application.properties will no longer work.
-
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("Aryan")
-                .password("Aryan2005")
-                .roles("USER")
-                .build(); // this will create the user nam eand password and the role in this
-        UserDetails user2 = User.withDefaultPasswordEncoder()
-                .username("Aryan kaamboj")
-                .password("Aryan2005")
-                .roles("Admin")
-                .build();
-                 // there are 2 different user
-        return new InMemoryUserDetailsManager(user);
+    public AuthenticationProvider auth(){
+        DaoAuthenticationProvider  provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+        // means you dont encode the passwrod
+        provider.setUserDetailsService(userDetailService);
+        return provider;
     }
 
 }

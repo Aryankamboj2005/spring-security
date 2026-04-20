@@ -1,4 +1,4 @@
-package com.Aryan.Spring_Security;
+package com.Aryan.Spring_Security.model;
 
 public class student {
     private String name ;
