@@ -42,7 +42,6 @@ public class security_config {
         DaoAuthenticationProvider  provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         // this line is used to decrypt the password while getting the password
-        // means you dont encode the passwrod
         provider.setUserDetailsService(userDetailService);
         return provider;
     }
