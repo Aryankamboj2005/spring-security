@@ -23,4 +23,9 @@ public class userController {
                 // and encrypted message is stored in the database
         return service.register(user);
     }
+    @PostMapping("/login")
+    public String login(@RequestBody Users user) {
+
+    return service.verify(user);
+    }
 }
