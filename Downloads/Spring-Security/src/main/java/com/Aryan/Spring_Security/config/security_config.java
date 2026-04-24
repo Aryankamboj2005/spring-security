@@ -31,7 +31,7 @@ public class security_config {
         // http.formLogin(Customizer.withDefaults()); // default login page is there
         http.httpBasic(Customizer.withDefaults()); // for the postmen
 
-        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        http.sessionManagement(  session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         // no need for the token number to enter the data v
         // always a new session id is created
         return http.build();
