@@ -1,0 +1,55 @@
+# OAuth2 Setup Steps: Google and LinkedIn
+
+This guide explains how to obtain the Client ID and Client Secret for your Spring Boot application.
+
+---
+
+## 1. Google OAuth2 Setup
+
+1.  **Go to Google Cloud Console**:
+    Visit [https://console.cloud.google.com/](https://console.cloud.google.com/)
+2.  **Create a New Project**:
+    Click the project dropdown in the top left and select "New Project". Give it a name (e.g., "OAuth2-Demo").
+3.  **Configure OAuth Consent Screen**:
+    - Go to "APIs & Services" > "OAuth consent screen".
+    - Select "External" and click "Create".
+    - Fill in the required app information (App name, support email, developer contact).
+    - Click "Save and Continue" through the scopes and test users sections.
+4.  **Create Credentials**:
+    - Go to "APIs & Services" > "Credentials".
+    - Click "+ Create Credentials" > "OAuth client ID".
+    - Application type: Select "Web application".
+    - Name: "Spring Boot OAuth2 Client".
+    - **Authorized redirect URIs**: Add `http://localhost:8080/login/oauth2/code/google`
+5.  **Get Credentials**:
+    A window will pop up showing your **Client ID** and **Client Secret**. Copy these into your `application.properties`.
+
+---
+
+## 2. LinkedIn OAuth2 Setup
+
+1.  **Go to LinkedIn Developers Portal**:
+    Visit [https://www.linkedin.com/developers/](https://www.linkedin.com/developers/)
+2.  **Create an App**:
+    Click "Create app". Fill in the app name, your LinkedIn Page (you may need to create a dummy company page), and upload a logo.
+3.  **Verify App**:
+    Verify your app by clicking the verification link sent to your LinkedIn Page.
+4.  **Add Products**:
+    Go to the "Products" tab and request access to "Sign In with LinkedIn using OpenID Connect". This is required for OAuth2 login.
+5.  **Configure Auth Settings**:
+    - Go to the "Auth" tab.
+    - Under "OAuth 2.0 settings", find **Authorized Redirect URLs**.
+    - Add `http://localhost:8080/login/oauth2/code/linkedin`
+6.  **Get Credentials**:
+    Under the "Auth" tab, you will find the **Client ID** and **Client Secret**. Copy these into your `application.properties`.
+
+---
+
+## Application Configuration
+Once you have the credentials, update your `src/main/resources/application.properties` file:
+
+spring.security.oauth2.client.registration.google.client-id=YOUR_GOOGLE_ID
+spring.security.oauth2.client.registration.google.client-secret=YOUR_GOOGLE_SECRET
+
+spring.security.oauth2.client.registration.linkedin.client-id=YOUR_LINKEDIN_ID
+spring.security.oauth2.client.registration.linkedin.client-secret=YOUR_LINKEDIN_SECRET
