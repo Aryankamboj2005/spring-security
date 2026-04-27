@@ -14,6 +14,9 @@ public class userService {
     AuthenticationManager authenticationManager;
     @Autowired
     private userRepo repo;
+    @Autowired
+    private jwtSerive JWTservice;
+
     public Users register(Users user) {
         return repo.save(user);
     }
@@ -24,7 +27,7 @@ public class userService {
               // check the user name and the password
 
         if(authentication.isAuthenticated()) { // check if user exist or not
-            return "success";
+            return JWTservice.generateToken(user.getUsername());
         }
         else{
             return "fail";
