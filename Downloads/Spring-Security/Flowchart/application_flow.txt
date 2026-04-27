@@ -1,0 +1,34 @@
+SPRING SECURITY JWT AUTHENTICATION FLOW
+=======================================
+
+PHASE 1: GENERATING THE TOKEN (Login Process)
+---------------------------------------------
+1. User sends credentials (Username/Password) to /login or /verify.
+2. Spring Security validates the user against the database.
+3. If valid, 'jwtService.generateToken(username)' is called:
+   a. Create an empty 'Claims' map (for any extra info).
+   b. Set 'Subject' (the username).
+   c. Set 'Issued At' (current timestamp).
+   d. Set 'Expiration' (current timestamp + 30 minutes).
+   e. Sign the entire package using the Secret Key generated in the constructor.
+   f. Compact the package into a Base64-encoded String.
+4. The generated token is returned to the user.
+
+PHASE 2: AUTHORIZING REQUESTS (Filter Process)
+----------------------------------------------
+1. User makes a request to a protected URL (e.g., /students) with the header:
+   "Authorization: Bearer <token>"
+2. 'JwtFilter' intercepts the request:
+   a. Extracts the token string by removing "Bearer ".
+   b. Calls 'jwtService.extractUsername(token)' to get the identity from the token.
+3. If the username is found and the user isn't logged in yet:
+   a. Loads the user's official details from the database.
+   b. Calls 'jwtService.validateToken(token, userDetails)' to check if the token matches the user and isn't expired.
+4. If everything is valid:
+   a. The user is marked as "Authenticated" in the SecurityContext.
+   b. The request is allowed to proceed to the StudentController.
+
+PHASE 3: DATA RETRIEVAL
+-----------------------
+1. 'StudentController' receives the request.
+2. It returns the list of students (JSON) as the final response.

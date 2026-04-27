@@ -15,7 +15,7 @@ public class userService {
     @Autowired
     private userRepo repo;
     @Autowired
-    private jwtSerive JWTservice;
+    private jwtService JWTservice;
 
     public Users register(Users user) {
         return repo.save(user);

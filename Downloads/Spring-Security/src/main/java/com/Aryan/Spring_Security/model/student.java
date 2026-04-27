@@ -1,9 +1,12 @@
 package com.Aryan.Spring_Security.model;
 
 public class student {
-    private String name ;
+    private String name;
     private int rollno;
     private int age;
+
+    public student() {
+    }
 
     public String getName() {
         return name;
@@ -34,7 +37,6 @@ public class student {
         this.rollno = rollno;
         this.age = age;
     }
-
 
     @Override
     public String toString() {

@@ -1,6 +1,8 @@
 package com.Aryan.Spring_Security.config;
 
+import com.Aryan.Spring_Security.Filter.JwtFilter;
 import com.Aryan.Spring_Security.service.MyUserDetailSeavice;
+import com.Aryan.Spring_Security.service.jwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity // to change the configuration of the web security
@@ -22,6 +25,9 @@ public class security_config {
 
     @Autowired
     private MyUserDetailSeavice userDetailService;
+
+    @Autowired
+    private JwtFilter jwtFilter;
 
     @Bean // used to tell the spring take the configuration from here
     public SecurityFilterChain chain(HttpSecurity http) throws Exception {
@@ -43,13 +49,20 @@ public class security_config {
 
         http.sessionManagement(  session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         // no need for the token number to enter the data v
+
+        http.addFilterBefore(jwtFilter , UsernamePasswordAuthenticationFilter.class);
+        // this will add a new filter before the UsernamePasswordAuthenticationFilter class
+        // and the filter name is jwtFilter
+
+
+
         // always a new session id is created
         return http.build();
     }
 
     @Bean
-    public AuthenticationProvider auth(){
-        DaoAuthenticationProvider  provider = new DaoAuthenticationProvider();
+    public AuthenticationProvider auth() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         // this line is used to decrypt the password while getting the password
         provider.setUserDetailsService(userDetailService);
